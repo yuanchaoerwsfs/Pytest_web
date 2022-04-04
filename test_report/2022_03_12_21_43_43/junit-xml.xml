@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="4" time="63.697" timestamp="2022-03-12T21:43:44.416154" hostname="DESKTOP-OJUL911"><testcase classname="test_dir.test_baidu.TestSearch" name="test_baidu_search_case" time="22.697"><failure message="AssertionError: assert '百度安全验证' == 'pytest_百度搜索'&#10;  - pytest_百度搜索&#10;  + 百度安全验证">self = &lt;test_dir.test_baidu.TestSearch object at 0x000002BC5E542B20&gt;
+browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="3a536cd061797e096931e15724a377e9")&gt;, base_url = 'https://www.baidu.com'
+
+    def test_baidu_search_case(self, browser, base_url):
+        """
+        名称：百度搜索"pytest"
+        步骤：
+        1、打开浏览器
+        2、输入"pytest"关键字
+        3、点击搜索按钮
+        检查点：
+        * 检查页面标题是否包含关键字。
+        """
+        page = BaiduPage(browser)
+        page.get(base_url)
+        sleep(5)
+        page.search_input = "pytest"
+        page.search_button.click()
+        sleep(2)
+&gt;       assert browser.title == "pytest_百度搜索"
+E       AssertionError: assert '百度安全验证' == 'pytest_百度搜索'
+E         - pytest_百度搜索
+E         + 百度安全验证
+
+test_dir\test_baidu.py:34: AssertionError</failure></testcase><testcase classname="test_dir.test_baidu.TestSearchSettings" name="test_baidu_search_setting" time="10.728" /><testcase classname="test_dir.test_parametrize" name="test_baidu_search[1-Selenium]" time="10.732"><failure message="AssertionError: assert '百度安全验证' == 'Selenium_百度搜索'&#10;  - Selenium_百度搜索&#10;  + 百度安全验证">name = 1, search_key = 'Selenium', browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="3a536cd061797e096931e15724a377e9")&gt;
+base_url = 'https://www.baidu.com'
+
+    @pytest.mark.parametrize(
+        "name, search_key",
+        get_data(base_path + "/test_dir/data/data_file.json")
+    )
+    def test_baidu_search(name, search_key, browser, base_url):
+        page = BaiduPage(browser)
+        page.get(base_url)
+        page.search_input = search_key
+        page.search_button.click()
+        sleep(2)
+&gt;       assert browser.title == search_key + "_百度搜索"
+E       AssertionError: assert '百度安全验证' == 'Selenium_百度搜索'
+E         - Selenium_百度搜索
+E         + 百度安全验证
+
+test_dir\test_parametrize.py:58: AssertionError</failure></testcase><testcase classname="test_dir.test_parametrize" name="test_baidu_search[2-poium]" time="14.555"><failure message="AssertionError: assert '百度安全验证' == 'poium_百度搜索'&#10;  - poium_百度搜索&#10;  + 百度安全验证">name = 2, search_key = 'poium', browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="ee56b2b039254c68b15f2dddbbb939e6")&gt;
+base_url = 'https://www.baidu.com'
+
+    @pytest.mark.parametrize(
+        "name, search_key",
+        get_data(base_path + "/test_dir/data/data_file.json")
+    )
+    def test_baidu_search(name, search_key, browser, base_url):
+        page = BaiduPage(browser)
+        page.get(base_url)
+        page.search_input = search_key
+        page.search_button.click()
+        sleep(2)
+&gt;       assert browser.title == search_key + "_百度搜索"
+E       AssertionError: assert '百度安全验证' == 'poium_百度搜索'
+E         - poium_百度搜索
+E         + 百度安全验证
+
+test_dir\test_parametrize.py:58: AssertionError</failure></testcase></testsuite></testsuites>

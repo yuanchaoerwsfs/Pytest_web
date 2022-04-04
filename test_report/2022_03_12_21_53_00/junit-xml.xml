@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="1" failures="1" skipped="0" tests="2" time="26.239" timestamp="2022-03-12T21:53:01.538532" hostname="DESKTOP-OJUL911"><testcase classname="test_dir.test_baidu.TestSearch" name="test_baidu_search_case" time="23.922"><failure message="AssertionError: assert '百度安全验证' == 'pytest_百度搜索'&#10;  - pytest_百度搜索&#10;  + 百度安全验证">self = &lt;test_dir.test_baidu.TestSearch object at 0x000001E8496FC250&gt;
+browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="dcef4bb5b7d9ba99e10683132e4faa07")&gt;
+base_url = 'https://www.baidu.com'
+
+    def test_baidu_search_case(self, browser, base_url):
+        """
+        名称：百度搜索"pytest"
+        步骤：
+        1、打开浏览器
+        2、输入"pytest"关键字
+        3、点击搜索按钮
+        检查点：
+        * 检查页面标题是否包含关键字。
+        """
+        page = BaiduPage(browser)
+        page.get(base_url)
+        sleep(5)
+        page.search_input = "pytest"
+        page.search_button.click()
+        sleep(2)
+&gt;       assert browser.title == "pytest_百度搜索"
+E       AssertionError: assert '百度安全验证' == 'pytest_百度搜索'
+E         - pytest_百度搜索
+E         + 百度安全验证
+
+test_dir\test_baidu.py:34: AssertionError</failure></testcase><testcase classname="pytest" name="internal" time="0.000"><error message="internal error">Traceback (most recent call last):
+  File "C:\Python38\lib\site-packages\_pytest\main.py", line 269, in wrap_session
+    session.exitstatus = doit(config, session) or 0
+  File "C:\Python38\lib\site-packages\_pytest\main.py", line 323, in _main
+    config.hook.pytest_runtestloop(session=session)
+  File "C:\Python38\lib\site-packages\pluggy\hooks.py", line 286, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File "C:\Python38\lib\site-packages\pluggy\manager.py", line 93, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File "C:\Python38\lib\site-packages\pluggy\manager.py", line 84, in &lt;lambda&gt;
+    self._inner_hookexec = lambda hook, methods, kwargs: hook.multicall(
+  File "C:\Python38\lib\site-packages\pluggy\callers.py", line 208, in _multicall
+    return outcome.get_result()
+  File "C:\Python38\lib\site-packages\pluggy\callers.py", line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "C:\Python38\lib\site-packages\pluggy\callers.py", line 187, in _multicall
+    res = hook_impl.function(*args)
+  File "C:\Python38\lib\site-packages\_pytest\main.py", line 348, in pytest_runtestloop
+    item.config.hook.pytest_runtest_protocol(item=item, nextitem=nextitem)
+  File "C:\Python38\lib\site-packages\pluggy\hooks.py", line 286, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File "C:\Python38\lib\site-packages\pluggy\manager.py", line 93, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File "C:\Python38\lib\site-packages\pluggy\manager.py", line 84, in &lt;lambda&gt;
+    self._inner_hookexec = lambda hook, methods, kwargs: hook.multicall(
+  File "C:\Python38\lib\site-packages\pluggy\callers.py", line 208, in _multicall
+    return outcome.get_result()
+  File "C:\Python38\lib\site-packages\pluggy\callers.py", line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "C:\Python38\lib\site-packages\pluggy\callers.py", line 187, in _multicall
+    res = hook_impl.function(*args)
+  File "C:\Python38\lib\site-packages\pytest_rerunfailures.py", line 240, in pytest_runtest_protocol
+    reports = runtestprotocol(item, nextitem=nextitem, log=False)
+  File "C:\Python38\lib\site-packages\_pytest\runner.py", line 126, in runtestprotocol
+    reports.append(call_and_report(item, "call", log))
+  File "C:\Python38\lib\site-packages\_pytest\runner.py", line 217, in call_and_report
+    report: TestReport = hook.pytest_runtest_makereport(item=item, call=call)
+  File "C:\Python38\lib\site-packages\pluggy\hooks.py", line 286, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File "C:\Python38\lib\site-packages\pluggy\manager.py", line 93, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File "C:\Python38\lib\site-packages\pluggy\manager.py", line 84, in &lt;lambda&gt;
+    self._inner_hookexec = lambda hook, methods, kwargs: hook.multicall(
+  File "C:\Python38\lib\site-packages\pluggy\callers.py", line 203, in _multicall
+    gen.send(outcome)
+  File "D:\Sun\Sun_SONY\pyautoTest-master\conftest.py", line 46, in pytest_runtest_makereport
+    capture_screenshots(case_name)
+  File "D:\Sun\Sun_SONY\pyautoTest-master\conftest.py", line 93, in capture_screenshots
+    RunConfig.driver.save_screenshot(image_dir)
+  File "C:\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1336, in save_screenshot
+    return self.get_screenshot_as_file(filename)
+  File "C:\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1311, in get_screenshot_as_file
+    png = self.get_screenshot_as_png()
+  File "C:\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1347, in get_screenshot_as_png
+    return b64decode(self.get_screenshot_as_base64().encode('ascii'))
+  File "C:\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1359, in get_screenshot_as_base64
+    return self.execute(Command.SCREENSHOT)['value']
+  File "C:\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 418, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 243, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=99.0.4844.51)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x010E9943+2595139]
+	Ordinal0 [0x0107C9F1+2148849]
+	Ordinal0 [0x00F74528+1066280]
+	Ordinal0 [0x00F5C640+968256]
+	Ordinal0 [0x00FBE259+1368665]
+	Ordinal0 [0x00FCB292+1421970]
+	Ordinal0 [0x00FBB806+1357830]
+	Ordinal0 [0x00F96086+1204358]
+	Ordinal0 [0x00F96F96+1208214]
+	GetHandleVerifier [0x0128B232+1658114]
+	GetHandleVerifier [0x0134312C+2411516]
+	GetHandleVerifier [0x0117F261+560433]
+	GetHandleVerifier [0x0117E366+556598]
+	Ordinal0 [0x0108286B+2173035]
+	Ordinal0 [0x010875F8+2192888]
+	Ordinal0 [0x010876E5+2193125]
+	Ordinal0 [0x010911FC+2232828]
+	BaseThreadInitThunk [0x74F46359+25]
+	RtlGetAppContainerNamedObjectPath [0x77017C14+228]
+	RtlGetAppContainerNamedObjectPath [0x77017BE4+180]</error></testcase></testsuite></testsuites>
