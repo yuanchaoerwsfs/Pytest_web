@@ -16,7 +16,7 @@ class RunConfig:
     rerun = "1"
 
     # 当达到最大失败数，停止执行
-    max_fail = "6"
+    max_fail = "9"
 
     # 浏览器驱动（不需要修改）
     driver = None
